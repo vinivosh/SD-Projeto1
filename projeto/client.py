@@ -52,6 +52,8 @@ def menu():
       chave = menuChave('pesquisar')
       response = stub.get(projeto_pb2.ChaveValor(chave=chave, versao=valor[0], timestamp=valor[1], dados=valor[2]))
       print("Tentou buscar chave. Resposta do servidor: " + response.e)
+      if str(response.e) == 'SUCCESS':
+        print('Chave encontrada: {' + str(chave) + ': (' + str(response.versao) + ', ' + str(response.timestamp) + ', ' + str(response.dados) + ')')
 
     elif resposta.lower() == 'del':
       chave = menuChave('deletar')
